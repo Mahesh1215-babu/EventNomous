@@ -1,0 +1,7 @@
+node_modules
+dist
+.env
+*.mjs
+*.mp4
+.vscode
+.agent
