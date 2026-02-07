@@ -1,11 +1,11 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
     ArrowRight, Zap,
-    Globe, BarChart3, CreditCard
+    Globe, BarChart3, CreditCard, Play, X
 } from 'lucide-react';
 import ImmersiveHero from '../components/hero/ImmersiveHero';
 
@@ -14,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
     const navigate = useNavigate();
     const mainRef = useRef(null);
+    const [showExperience, setShowExperience] = useState(false);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -59,8 +60,12 @@ const Home = () => {
                         >
                             Launch Your Event
                         </button>
-                        <button className="btn-premium border-brand-obsidian/10 text-brand-obsidian/60 hover:bg-slate-50 min-w-[240px]">
-                            Watch Experience
+                        <button
+                            onClick={() => setShowExperience(true)}
+                            className="btn-premium border-brand-obsidian/10 text-brand-obsidian/60 hover:bg-slate-50 min-w-[240px] flex items-center justify-center space-x-2"
+                        >
+                            <Play className="w-4 h-4" />
+                            <span>Watch Experience</span>
                         </button>
                     </div>
                 </div>
@@ -131,6 +136,67 @@ const Home = () => {
                     <p className="text-[10px] font-bold text-brand-obsidian/20">© 2026 EVENTNOMOUS FINTECH GROUP. ALL RIGHTS RESERVED.</p>
                 </div>
             </footer>
+
+            {/* Watch Experience Modal */}
+            {showExperience && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="glass-luxury bg-white rounded-[48px] p-12 max-w-4xl w-full relative border-slate-100 shadow-2xl"
+                    >
+                        <button
+                            onClick={() => setShowExperience(false)}
+                            className="absolute top-8 right-8 w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-all"
+                        >
+                            <X className="w-5 h-5" />
+                        </button>
+
+                        <div className="space-y-8">
+                            <div className="space-y-4">
+                                <h3 className="text-4xl font-black uppercase tracking-tight text-brand-obsidian">
+                                    Elite <span className="text-luxury-gradient">Infrastructure.</span>
+                                </h3>
+                                <p className="text-brand-obsidian/60 font-medium text-lg">
+                                    Experience the future of event management with our institutional-grade platform.
+                                </p>
+                            </div>
+
+                            <div className="grid md:grid-cols-3 gap-6">
+                                {[
+                                    { title: 'AI Matchmaking', desc: 'Neural network vendor selection', icon: Globe },
+                                    { title: 'PNPL Financing', desc: 'Institutional credit lines', icon: CreditCard },
+                                    { title: 'Real-time Analytics', desc: 'Live event intelligence', icon: BarChart3 },
+                                ].map((feature, i) => (
+                                    <div key={i} className="glass-luxury p-6 rounded-[32px] border-slate-100 space-y-3">
+                                        <div className="w-12 h-12 bg-brand-gold/10 rounded-xl flex items-center justify-center text-brand-gold">
+                                            <feature.icon className="w-6 h-6" />
+                                        </div>
+                                        <h4 className="font-black text-brand-obsidian">{feature.title}</h4>
+                                        <p className="text-sm text-brand-obsidian/60">{feature.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="flex items-center justify-center space-x-4 pt-6">
+                                <button
+                                    onClick={() => navigate('/auth/signup')}
+                                    className="btn-premium bg-brand-gold text-white hover:shadow-brand-gold/20 flex items-center space-x-2"
+                                >
+                                    <span>Get Started</span>
+                                    <ArrowRight className="w-4 h-4" />
+                                </button>
+                                <button
+                                    onClick={() => setShowExperience(false)}
+                                    className="btn-premium border-brand-obsidian/10 text-brand-obsidian/60 hover:bg-slate-50"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            )}
         </main>
     );
 };

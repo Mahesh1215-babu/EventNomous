@@ -16,6 +16,10 @@ import Notifications from './pages/notifications/Notifications';
 import VendorDetail from './pages/vendors/VendorDetail';
 import SpecificEventDash from './pages/events/SpecificEventDash';
 import PNPLDashboard from './pages/fintech/PNPLDash';
+import Payments from './pages/payments/Payments';
+import Settings from './pages/settings/Settings';
+import Messages from './pages/messages/Messages';
+import ForgotPassword from './pages/auth/ForgotPassword';
 
 function App() {
     return (
@@ -33,7 +37,13 @@ function App() {
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/notifications" element={<Notifications />} />
                 <Route path="/support" element={<Support />} />
+                <Route path="/payments" element={<Payments />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/messages" element={<Messages />} />
             </Route>
+
+            {/* Auth Routes */}
+            <Route path="/auth/forgot-password" element={<ForgotPassword />} />
 
             {/* Role-based Dashboards */}
             <Route path="/dashboard/user" element={<UserDashboard />} />

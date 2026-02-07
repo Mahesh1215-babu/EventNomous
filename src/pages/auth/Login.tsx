@@ -65,7 +65,12 @@ const Login = () => {
                             <div className="space-y-2">
                                 <div className="flex justify-between items-center ml-1">
                                     <label className="text-[10px] font-black text-brand-gold uppercase tracking-[0.2em]">Secret Key</label>
-                                    <button className="text-[10px] font-black text-brand-gold hover:underline uppercase tracking-widest">Recovery</button>
+                                    <button
+                                        onClick={() => navigate('/auth/forgot-password')}
+                                        className="text-[10px] font-black text-brand-gold hover:underline uppercase tracking-widest"
+                                    >
+                                        Recovery
+                                    </button>
                                 </div>
                                 <div className="relative group">
                                     <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none group-focus-within:text-brand-gold transition-colors text-brand-obsidian/40">

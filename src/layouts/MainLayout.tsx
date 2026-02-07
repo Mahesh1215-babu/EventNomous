@@ -1,6 +1,5 @@
 import { Outlet, Link, useNavigate } from 'react-router-dom';
-import { Calendar } from 'lucide-react';
-import AIChatbot from '../components/ai/AIChatbot';
+import AIAssistant from '../components/ai/AIAssistant';
 
 
 const MainLayout = () => {
@@ -47,7 +46,7 @@ const MainLayout = () => {
                 <Outlet />
             </main>
 
-            <AIChatbot />
+            <AIAssistant />
         </div>
     );
 };
