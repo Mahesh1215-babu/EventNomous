@@ -20,7 +20,7 @@ export default function ChartCard({
     action,
 }: ChartCardProps) {
     return (
-        <div className="glass-luxury bg-white p-8 rounded-[32px] border-slate-100 shadow-sm space-y-6">
+        <div className="glass-luxury bg-white dark:bg-slate-800 p-8 rounded-[32px] border-slate-100 dark:border-slate-700 shadow-sm space-y-6 transition-all duration-300">
             <div className="flex items-start justify-between">
                 <div className="space-y-2">
                     <div className="flex items-center space-x-3">
@@ -29,12 +29,12 @@ export default function ChartCard({
                                 <Icon className="w-5 h-5" />
                             </div>
                         )}
-                        <h3 className="text-xl font-black uppercase tracking-tight text-brand-obsidian">
+                        <h3 className="text-xl font-black uppercase tracking-tight text-brand-obsidian dark:text-white transition-colors">
                             {title}
                         </h3>
                     </div>
                     {subtitle && (
-                        <p className="text-sm text-brand-obsidian/60 font-medium ml-13">
+                        <p className="text-sm text-brand-obsidian/60 dark:text-slate-400 font-medium ml-13 transition-colors">
                             {subtitle}
                         </p>
                     )}

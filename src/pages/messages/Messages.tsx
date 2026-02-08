@@ -13,20 +13,20 @@ const Messages = () => {
     };
 
     return (
-        <div className="min-h-screen bg-white pt-20">
+        <div className="min-h-screen bg-white dark:bg-slate-900 pt-20 transition-colors duration-300">
             <div className="max-w-7xl mx-auto h-[calc(100vh-5rem)] flex">
                 {/* Conversations List */}
-                <div className="w-96 border-r border-slate-100 flex flex-col">
-                    <div className="p-6 border-b border-slate-100 space-y-4">
-                        <h2 className="text-2xl font-black uppercase tracking-tight text-brand-obsidian">
+                <div className="w-96 border-r border-slate-100 dark:border-slate-700 flex flex-col transition-colors duration-300">
+                    <div className="p-6 border-b border-slate-100 dark:border-slate-700 space-y-4 transition-colors">
+                        <h2 className="text-2xl font-black uppercase tracking-tight text-brand-obsidian dark:text-white transition-colors">
                             Messages
                         </h2>
                         <div className="relative">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-obsidian/20" />
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-obsidian/20 dark:text-slate-500" />
                             <input
                                 type="text"
                                 placeholder="Search conversations..."
-                                className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none text-sm font-medium"
+                                className="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none text-sm font-medium text-brand-obsidian dark:text-white placeholder:text-brand-obsidian/40 dark:placeholder:text-slate-500 transition-all duration-300"
                             />
                         </div>
                     </div>
@@ -36,19 +36,19 @@ const Messages = () => {
                             <button
                                 key={conversation.id}
                                 onClick={() => setSelectedConversation(conversation)}
-                                className={`w-full p-6 border-b border-slate-50 hover:bg-slate-50 transition-all text-left ${selectedConversation.id === conversation.id ? 'bg-slate-50' : ''
+                                className={`w-full p-6 border-b border-slate-50 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all text-left ${selectedConversation.id === conversation.id ? 'bg-slate-50 dark:bg-slate-800/80' : ''
                                     }`}
                             >
                                 <div className="flex items-start justify-between mb-2">
                                     <div className="flex items-center space-x-3">
-                                        <div className="w-12 h-12 bg-brand-accent/10 rounded-full flex items-center justify-center text-brand-accent font-black">
+                                        <div className="w-12 h-12 bg-brand-accent/10 dark:bg-brand-accent/20 rounded-full flex items-center justify-center text-brand-accent font-black">
                                             {conversation.participantNames[1][0]}
                                         </div>
                                         <div>
-                                            <p className="font-black text-brand-obsidian">
+                                            <p className="font-black text-brand-obsidian dark:text-white transition-colors">
                                                 {conversation.participantNames[1]}
                                             </p>
-                                            <p className="text-xs text-brand-obsidian/40">
+                                            <p className="text-xs text-brand-obsidian/40 dark:text-slate-500 transition-colors">
                                                 {conversation.lastMessageTime.toLocaleTimeString('en-IN', {
                                                     hour: '2-digit',
                                                     minute: '2-digit',
@@ -62,7 +62,7 @@ const Messages = () => {
                                         </div>
                                     )}
                                 </div>
-                                <p className="text-sm text-brand-obsidian/60 line-clamp-2">
+                                <p className="text-sm text-brand-obsidian/60 dark:text-slate-400 line-clamp-2 transition-colors">
                                     {conversation.lastMessage}
                                 </p>
                             </button>
@@ -71,25 +71,25 @@ const Messages = () => {
                 </div>
 
                 {/* Chat Area */}
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col bg-white dark:bg-slate-900 transition-colors duration-300">
                     {/* Chat Header */}
-                    <div className="p-6 border-b border-slate-100 flex items-center justify-between">
+                    <div className="p-6 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between transition-colors">
                         <div className="flex items-center space-x-4">
-                            <button className="md:hidden">
+                            <button className="md:hidden text-brand-obsidian dark:text-white">
                                 <ArrowLeft className="w-5 h-5" />
                             </button>
-                            <div className="w-12 h-12 bg-brand-accent/10 rounded-full flex items-center justify-center text-brand-accent font-black text-lg">
+                            <div className="w-12 h-12 bg-brand-accent/10 dark:bg-brand-accent/20 rounded-full flex items-center justify-center text-brand-accent font-black text-lg">
                                 {selectedConversation.participantNames[1][0]}
                             </div>
                             <div>
-                                <h3 className="font-black text-brand-obsidian">
+                                <h3 className="font-black text-brand-obsidian dark:text-white transition-colors">
                                     {selectedConversation.participantNames[1]}
                                 </h3>
-                                <p className="text-xs text-brand-obsidian/40">Active now</p>
+                                <p className="text-xs text-brand-obsidian/40 dark:text-slate-500 transition-colors">Active now</p>
                             </div>
                         </div>
-                        <button className="w-10 h-10 rounded-full hover:bg-slate-50 flex items-center justify-center">
-                            <MoreVertical className="w-5 h-5 text-brand-obsidian/40" />
+                        <button className="w-10 h-10 rounded-full hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center justify-center transition-colors">
+                            <MoreVertical className="w-5 h-5 text-brand-obsidian/40 dark:text-slate-400" />
                         </button>
                     </div>
 
@@ -103,14 +103,14 @@ const Messages = () => {
                                     className={`flex ${message.senderId === 'user-001' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     <div
-                                        className={`max-w-[70%] p-4 rounded-2xl ${message.senderId === 'user-001'
+                                        className={`max-w-[70%] p-4 rounded-2xl transition-colors ${message.senderId === 'user-001'
                                             ? 'bg-brand-accent text-white'
-                                            : 'bg-slate-50 text-brand-obsidian border border-slate-100'
+                                            : 'bg-slate-50 dark:bg-slate-800 text-brand-obsidian dark:text-white border border-slate-100 dark:border-slate-700'
                                             }`}
                                     >
                                         <p className="text-sm font-medium leading-relaxed">{message.content}</p>
                                         <p
-                                            className={`text-[10px] mt-2 ${message.senderId === 'user-001' ? 'text-white/60' : 'text-brand-obsidian/40'
+                                            className={`text-[10px] mt-2 ${message.senderId === 'user-001' ? 'text-white/60' : 'text-brand-obsidian/40 dark:text-slate-400'
                                                 }`}
                                         >
                                             {message.timestamp.toLocaleTimeString('en-IN', {
@@ -124,7 +124,7 @@ const Messages = () => {
                     </div>
 
                     {/* Input */}
-                    <div className="p-6 border-t border-slate-100">
+                    <div className="p-6 border-t border-slate-100 dark:border-slate-700 transition-colors">
                         <div className="flex items-center space-x-4">
                             <input
                                 type="text"
@@ -132,12 +132,12 @@ const Messages = () => {
                                 onChange={(e) => setMessageInput(e.target.value)}
                                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                                 placeholder="Type your message..."
-                                className="flex-1 px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none text-sm font-medium"
+                                className="flex-1 px-6 py-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none text-sm font-medium text-brand-obsidian dark:text-white placeholder:text-brand-obsidian/30 dark:placeholder:text-slate-500 transition-all duration-300"
                             />
                             <button
                                 onClick={handleSend}
                                 disabled={!messageInput.trim()}
-                                className="w-14 h-14 bg-brand-accent hover:bg-brand-accent/90 disabled:bg-slate-200 disabled:cursor-not-allowed rounded-2xl flex items-center justify-center text-white transition-all"
+                                className="w-14 h-14 bg-brand-accent hover:bg-brand-accent/90 disabled:bg-slate-200 dark:disabled:bg-slate-800 disabled:cursor-not-allowed rounded-2xl flex items-center justify-center text-white transition-all"
                             >
                                 <Send className="w-5 h-5" />
                             </button>

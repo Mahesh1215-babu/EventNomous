@@ -57,7 +57,7 @@ export default function StatCard({
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`glass-luxury p-8 rounded-[32px] border-slate-100 hover:border-${color === 'gold' ? 'brand-gold' : 'brand-accent'}/30 transition-all group ${onClick ? 'cursor-pointer' : ''} bg-white shadow-sm`}
+            className={`glass-luxury p-8 rounded-[32px] border-slate-100 dark:border-slate-700 hover:border-${color === 'gold' ? 'brand-gold' : 'brand-accent'}/30 transition-all group ${onClick ? 'cursor-pointer' : ''} bg-white dark:bg-slate-800/50 shadow-sm duration-300`}
             onClick={onClick}
         >
             <div className="flex items-start justify-between mb-6">
@@ -65,7 +65,7 @@ export default function StatCard({
                     <Icon className="w-7 h-7" />
                 </div>
                 {trend && (
-                    <div className={`flex items-center space-x-1 text-xs font-black uppercase tracking-widest ${trend.isPositive ? 'text-green-600' : 'text-red-600'}`}>
+                    <div className={`flex items-center space-x-1 text-xs font-black uppercase tracking-widest ${trend.isPositive ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                         <span>{trend.isPositive ? '↑' : '↓'}</span>
                         <span>{Math.abs(trend.value)}%</span>
                     </div>
@@ -73,14 +73,14 @@ export default function StatCard({
             </div>
 
             <div className="space-y-2">
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-obsidian/40">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-obsidian/40 dark:text-slate-500 transition-colors">
                     {title}
                 </p>
-                <p className="text-4xl font-black text-brand-obsidian tracking-tight">
+                <p className="text-4xl font-black text-brand-obsidian dark:text-white tracking-tight transition-colors">
                     {value}
                 </p>
                 {subtitle && (
-                    <p className="text-xs text-brand-obsidian/60 font-medium">
+                    <p className="text-xs text-brand-obsidian/60 dark:text-slate-400 font-medium transition-colors">
                         {subtitle}
                     </p>
                 )}

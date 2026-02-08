@@ -13,22 +13,22 @@ const SpecificEventDash = () => {
     const { id } = useParams();
 
     return (
-        <div className="min-h-screen bg-white text-brand-obsidian pt-32 pb-20 px-6 relative overflow-hidden">
+        <div className="min-h-screen bg-white dark:bg-slate-900 text-brand-obsidian dark:text-white pt-32 pb-20 px-6 relative overflow-hidden transition-colors duration-300">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-gold/5 rounded-full blur-[150px]"></div>
 
             <div className="max-w-7xl mx-auto space-y-12 relative z-10">
                 {/* Header Actions */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
                     <div className="space-y-4">
-                        <button onClick={() => navigate(-1)} className="flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-brand-obsidian/40 hover:text-brand-obsidian transition-all">
+                        <button onClick={() => navigate(-1)} className="flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-brand-obsidian/40 dark:text-slate-500 hover:text-brand-obsidian dark:hover:text-white transition-all">
                             <ArrowLeft className="w-4 h-4" />
                             <span>Return to Portfolio</span>
                         </button>
                         <div className="flex items-center space-x-4">
-                            <h1 className="text-5xl font-black uppercase tracking-tighter text-brand-obsidian">Global Tech <span className="text-luxury-gradient">Summit '27.</span></h1>
+                            <h1 className="text-5xl font-black uppercase tracking-tighter text-brand-obsidian dark:text-white transition-colors">Global Tech <span className="text-luxury-gradient">Summit '27.</span></h1>
                             <span className="px-3 py-1 bg-brand-gold text-white rounded-full text-[8px] font-black uppercase tracking-widest shadow-sm">Active Planning</span>
                         </div>
-                        <div className="flex items-center space-x-6 text-brand-obsidian/60">
+                        <div className="flex items-center space-x-6 text-brand-obsidian/60 dark:text-slate-400 transition-colors">
                             <div className="flex items-center space-x-2">
                                 <Calendar className="w-4 h-4 text-brand-gold" />
                                 <span className="text-xs font-bold uppercase tracking-widest">Oct 24, 2026</span>
@@ -40,7 +40,7 @@ const SpecificEventDash = () => {
                         </div>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <button className="btn-premium border-slate-200 text-brand-obsidian/40 hover:text-brand-obsidian flex items-center space-x-2 hover:bg-slate-50">
+                        <button className="btn-premium border-slate-200 dark:border-slate-700 text-brand-obsidian/40 dark:text-slate-500 hover:text-brand-obsidian dark:hover:text-white flex items-center space-x-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
                             <MessageSquare className="w-4 h-4" />
                             <span>Collaborate</span>
                         </button>
@@ -58,13 +58,13 @@ const SpecificEventDash = () => {
                         { label: 'Execution Health', value: '94%', icon: Target, color: 'text-green-500' },
                         { label: 'PNPL Status', value: 'Tranche A', icon: ShieldCheck, color: 'text-brand-gold' },
                     ].map((stat, i) => (
-                        <div key={i} className="glass-luxury p-8 rounded-[40px] border-slate-100 space-y-4 bg-white shadow-sm hover:shadow-md transition-shadow">
-                            <div className={`w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center ${stat.color}`}>
+                        <div key={i} className="glass-luxury p-8 rounded-[40px] border-slate-100 dark:border-slate-700/50 space-y-4 bg-white dark:bg-slate-800/50 shadow-sm hover:shadow-md transition-all">
+                            <div className={`w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-900 flex items-center justify-center transition-colors ${stat.color}`}>
                                 <stat.icon className="w-5 h-5" />
                             </div>
                             <div>
-                                <p className="text-[8px] font-black uppercase tracking-[0.2em] text-brand-obsidian/40 mb-1">{stat.label}</p>
-                                <p className="text-2xl font-black text-brand-obsidian">{stat.value}</p>
+                                <p className="text-[8px] font-black uppercase tracking-[0.2em] text-brand-obsidian/40 dark:text-slate-500 mb-1 transition-colors">{stat.label}</p>
+                                <p className="text-2xl font-black text-brand-obsidian dark:text-white transition-colors">{stat.value}</p>
                             </div>
                         </div>
                     ))}
@@ -83,18 +83,18 @@ const SpecificEventDash = () => {
                                 { name: 'Lumina Visuals', role: 'Digital Immersive', budget: '$65k', status: 'Draft' },
                                 { name: 'Nexus Logistics', role: 'Ground Support', budget: '$18k', status: 'Confirmed' },
                             ].map((partner, i) => (
-                                <div key={i} className="glass-luxury p-8 rounded-[32px] border-slate-100 flex items-center justify-between group hover:border-brand-gold/20 transition-all cursor-pointer bg-white shadow-sm hover:shadow-xl">
+                                <div key={i} className="glass-luxury p-8 rounded-[32px] border-slate-100 dark:border-slate-700/50 flex items-center justify-between group hover:border-brand-gold/20 transition-all cursor-pointer bg-white dark:bg-slate-800/50 shadow-sm hover:shadow-xl">
                                     <div className="flex items-center space-x-6">
-                                        <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-brand-gold group-hover:scale-110 transition-transform">
-                                            <CheckCircle2 className={`w-7 h-7 ${partner.status === 'Confirmed' ? 'text-green-500' : 'text-brand-obsidian/20'}`} />
+                                        <div className="w-14 h-14 bg-slate-50 dark:bg-slate-900 rounded-2xl flex items-center justify-center text-brand-gold group-hover:scale-110 transition-transform shadow-sm">
+                                            <CheckCircle2 className={`w-7 h-7 ${partner.status === 'Confirmed' ? 'text-green-500' : 'text-brand-obsidian/20 dark:text-slate-700'}`} />
                                         </div>
                                         <div>
                                             <p className="text-[10px] font-black uppercase tracking-widest text-brand-gold">{partner.role}</p>
-                                            <h4 className="text-xl font-black uppercase text-brand-obsidian">{partner.name}</h4>
+                                            <h4 className="text-xl font-black uppercase text-brand-obsidian dark:text-white transition-colors">{partner.name}</h4>
                                         </div>
                                     </div>
                                     <div className="text-right space-y-2">
-                                        <p className="text-xl font-black text-brand-obsidian">{partner.budget}</p>
+                                        <p className="text-xl font-black text-brand-obsidian dark:text-white transition-colors">{partner.budget}</p>
                                         <span className={`px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest transition-all ${partner.status === 'Confirmed' ? 'bg-green-500/10 text-green-500' : 'bg-brand-gold/10 text-brand-gold'}`}>
                                             {partner.status}
                                         </span>
@@ -106,28 +106,28 @@ const SpecificEventDash = () => {
 
                     <div className="space-y-8">
                         <h3 className="text-2xl font-black uppercase tracking-tight text-brand-obsidian">Strategy <span className="text-brand-gold">Insights.</span></h3>
-                        <div className="glass-luxury p-10 rounded-[56px] border-slate-100 relative overflow-hidden h-full flex flex-col justify-between bg-white shadow-xl">
+                        <div className="glass-luxury p-10 rounded-[56px] border-slate-100 dark:border-slate-700/50 relative overflow-hidden h-full flex flex-col justify-between bg-white dark:bg-slate-800/80 shadow-xl transition-all">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl"></div>
 
                             <div className="space-y-8 relative z-10">
-                                <div className="w-14 h-14 bg-slate-50 text-brand-gold rounded-2xl flex items-center justify-center border border-brand-gold/20 shadow-sm">
+                                <div className="w-14 h-14 bg-slate-50 dark:bg-slate-900 text-brand-gold rounded-2xl flex items-center justify-center border border-brand-gold/20 shadow-sm transition-colors">
                                     <Zap className="w-8 h-8" />
                                 </div>
                                 <div className="space-y-4">
-                                    <h4 className="text-xl font-black uppercase leading-tight text-brand-obsidian">Optimization Alert</h4>
-                                    <p className="text-brand-obsidian/60 text-sm font-medium leading-relaxed">
+                                    <h4 className="text-xl font-black uppercase leading-tight text-brand-obsidian dark:text-white transition-colors">Optimization Alert</h4>
+                                    <p className="text-brand-obsidian/60 dark:text-slate-400 text-sm font-medium leading-relaxed transition-colors">
                                         Neural engine suggests adjusting "Digital Immersive" scope by 12% to align with original strategic objectives for the Singapore region.
                                     </p>
                                 </div>
                             </div>
 
                             <div className="space-y-6 pt-10 relative z-10">
-                                <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-brand-obsidian/40">
+                                <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-brand-obsidian/40 dark:text-slate-500 transition-colors">
                                     <span>Strategic Alignment</span>
                                     <span>88%</span>
                                 </div>
-                                <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                    <div className="w-[88%] h-full bg-brand-gold rounded-full"></div>
+                                <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-900 rounded-full overflow-hidden transition-colors">
+                                    <div className="w-[88%] h-full bg-brand-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.4)]"></div>
                                 </div>
                                 <button className="w-full btn-premium bg-brand-gold text-white shadow-lg">Accept Optimization</button>
                             </div>

@@ -64,7 +64,7 @@ const EventCarousel = () => {
     }, [currentIndex]);
 
     return (
-        <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden rounded-[48px] bg-gray-100 ring-1 ring-gray-200">
+        <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden rounded-[48px] bg-gray-100 dark:bg-slate-800 ring-1 ring-gray-200 dark:ring-slate-700 transition-colors duration-300">
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                     key={currentIndex}
@@ -116,13 +116,13 @@ const EventCarousel = () => {
 
             {/* Navigation Buttons */}
             <button
-                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 glass rounded-full flex items-center justify-center text-brand-dark hover:bg-white transition-all z-10"
+                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 glass rounded-full flex items-center justify-center text-brand-dark dark:text-white hover:bg-white dark:hover:bg-slate-700 transition-all z-10"
                 onClick={() => paginate(-1)}
             >
                 <ChevronLeft className="w-6 h-6" />
             </button>
             <button
-                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 glass rounded-full flex items-center justify-center text-brand-dark hover:bg-white transition-all z-10"
+                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 glass rounded-full flex items-center justify-center text-brand-dark dark:text-white hover:bg-white dark:hover:bg-slate-700 transition-all z-10"
                 onClick={() => paginate(1)}
             >
                 <ChevronRight className="w-6 h-6" />

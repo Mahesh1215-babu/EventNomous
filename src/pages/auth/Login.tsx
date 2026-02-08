@@ -8,7 +8,7 @@ const Login = () => {
     const [useOtp, setUseOtp] = useState(false);
 
     return (
-        <div className="min-h-screen bg-white flex items-center justify-center px-6 py-20 relative overflow-hidden">
+        <div className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center px-6 py-20 relative overflow-hidden transition-colors duration-300">
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-[150px]"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-accent/5 rounded-full blur-[150px]"></div>
@@ -22,25 +22,25 @@ const Login = () => {
                     >
                         <Zap className="w-8 h-8" />
                     </motion.div>
-                    <h2 className="text-4xl font-black text-brand-obsidian uppercase tracking-tighter">Executive <span className="text-luxury-gradient">Login.</span></h2>
-                    <p className="text-brand-obsidian/60 font-medium">Access your elite event ecosystem.</p>
+                    <h2 className="text-4xl font-black text-brand-obsidian dark:text-white uppercase tracking-tighter transition-colors duration-300">Executive <span className="text-luxury-gradient">Login.</span></h2>
+                    <p className="text-brand-obsidian/60 dark:text-slate-400 font-medium transition-colors duration-300">Access your elite event ecosystem.</p>
                 </div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="glass-luxury bg-white rounded-[40px] p-10 space-y-8 border-slate-100 shadow-2xl"
+                    className="glass-luxury bg-white dark:bg-slate-800/50 rounded-[40px] p-10 space-y-8 border-slate-100 dark:border-slate-700/50 shadow-2xl transition-all duration-300"
                 >
-                    <div className="flex bg-slate-50 p-1.5 rounded-2xl border border-slate-100">
+                    <div className="flex bg-slate-50 dark:bg-slate-900/50 p-1.5 rounded-2xl border border-slate-100 dark:border-slate-700/50">
                         <button
                             onClick={() => setUseOtp(false)}
-                            className={`flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all ${!useOtp ? 'bg-brand-gold text-white shadow-lg' : 'text-brand-obsidian/40 hover:text-brand-obsidian'}`}
+                            className={`flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all ${!useOtp ? 'bg-brand-gold text-white shadow-lg' : 'text-brand-obsidian/40 dark:text-slate-500 hover:text-brand-obsidian dark:hover:text-white'}`}
                         >
                             Security Key
                         </button>
                         <button
                             onClick={() => setUseOtp(true)}
-                            className={`flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all ${useOtp ? 'bg-brand-gold text-white shadow-lg' : 'text-brand-obsidian/40 hover:text-brand-obsidian'}`}
+                            className={`flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all ${useOtp ? 'bg-brand-gold text-white shadow-lg' : 'text-brand-obsidian/40 dark:text-slate-500 hover:text-brand-obsidian dark:hover:text-white'}`}
                         >
                             OTP Access
                         </button>
@@ -50,12 +50,12 @@ const Login = () => {
                         <div className="space-y-2">
                             <label className="text-[10px] font-black text-brand-gold uppercase tracking-[0.2em] ml-1">Identity Identifier</label>
                             <div className="relative group">
-                                <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none group-focus-within:text-brand-gold transition-colors text-brand-obsidian/40">
+                                <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none group-focus-within:text-brand-gold transition-colors text-brand-obsidian/40 dark:text-slate-500">
                                     {useOtp ? <Phone className="h-5 w-5" /> : <Mail className="h-5 w-5" />}
                                 </div>
                                 <input
                                     type="text"
-                                    className="block w-full pl-16 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-gold/50 focus:border-brand-gold/50 transition-all outline-none text-brand-obsidian placeholder:text-brand-obsidian/40 font-bold"
+                                    className="block w-full pl-16 pr-6 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/50 rounded-2xl focus:ring-1 focus:ring-brand-gold/50 focus:border-brand-gold/50 transition-all outline-none text-brand-obsidian dark:text-white placeholder:text-brand-obsidian/40 dark:placeholder:text-slate-500 font-bold"
                                     placeholder={useOtp ? "+1 (555) 000-0000" : "executive@eventnomous.com"}
                                 />
                             </div>
@@ -73,12 +73,12 @@ const Login = () => {
                                     </button>
                                 </div>
                                 <div className="relative group">
-                                    <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none group-focus-within:text-brand-gold transition-colors text-brand-obsidian/40">
+                                    <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none group-focus-within:text-brand-gold transition-colors text-brand-obsidian/40 dark:text-slate-500">
                                         <Lock className="h-5 w-5" />
                                     </div>
                                     <input
                                         type="password"
-                                        className="block w-full pl-16 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-gold/50 focus:border-brand-gold/50 transition-all outline-none text-brand-obsidian placeholder:text-brand-obsidian/40 font-bold"
+                                        className="block w-full pl-16 pr-6 py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/50 rounded-2xl focus:ring-1 focus:ring-brand-gold/50 focus:border-brand-gold/50 transition-all outline-none text-brand-obsidian dark:text-white placeholder:text-brand-obsidian/40 dark:placeholder:text-slate-500 font-bold"
                                         placeholder="••••••••"
                                     />
                                 </div>
@@ -100,21 +100,21 @@ const Login = () => {
 
                     <div className="relative py-4">
                         <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-slate-100"></div>
+                            <div className="w-full border-t border-slate-100 dark:border-slate-700/50"></div>
                         </div>
                         <div className="relative flex justify-center text-[10px] font-black uppercase tracking-widest">
-                            <span className="px-4 bg-white text-brand-obsidian/40">Institutional Connect</span>
+                            <span className="px-4 bg-white dark:bg-slate-800 text-brand-obsidian/40 dark:text-slate-500 transition-colors duration-300">Institutional Connect</span>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <button className="flex items-center justify-center space-x-2 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-slate-100 transition-all group">
-                            <Chrome className="h-5 w-5 text-brand-obsidian/40 group-hover:text-brand-obsidian transition-colors" />
-                            <span className="text-[10px] font-black uppercase tracking-widest text-brand-obsidian/40 group-hover:text-brand-obsidian">Google</span>
+                        <button className="flex items-center justify-center space-x-2 py-3.5 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700/50 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group">
+                            <Chrome className="h-5 w-5 text-brand-obsidian/40 dark:text-slate-500 group-hover:text-brand-obsidian dark:group-hover:text-white transition-colors" />
+                            <span className="text-[10px] font-black uppercase tracking-widest text-brand-obsidian/40 dark:text-slate-500 group-hover:text-brand-obsidian dark:group-hover:text-white">Google</span>
                         </button>
-                        <button className="flex items-center justify-center space-x-2 py-3.5 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-slate-100 transition-all group">
-                            <Github className="h-5 w-5 text-brand-obsidian/40 group-hover:text-brand-obsidian transition-colors" />
-                            <span className="text-[10px] font-black uppercase tracking-widest text-brand-obsidian/40 group-hover:text-brand-obsidian">GitHub</span>
+                        <button className="flex items-center justify-center space-x-2 py-3.5 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700/50 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group">
+                            <Github className="h-5 w-5 text-brand-obsidian/40 dark:text-slate-500 group-hover:text-brand-obsidian dark:group-hover:text-white transition-colors" />
+                            <span className="text-[10px] font-black uppercase tracking-widest text-brand-obsidian/40 dark:text-slate-500 group-hover:text-brand-obsidian dark:group-hover:text-white">GitHub</span>
                         </button>
                     </div>
                 </motion.div>

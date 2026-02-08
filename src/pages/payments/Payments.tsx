@@ -98,20 +98,20 @@ const Payments = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-white pt-32 pb-20 px-6">
+        <div className="min-h-screen bg-white dark:bg-slate-900 pt-32 pb-20 px-6 transition-colors duration-300">
             <div className="max-w-7xl mx-auto space-y-12">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div className="space-y-4">
-                        <h1 className="text-5xl font-black uppercase tracking-tighter text-brand-obsidian">
+                        <h1 className="text-5xl font-black uppercase tracking-tighter text-brand-obsidian dark:text-white transition-colors">
                             Payment <span className="text-brand-accent">Intelligence.</span>
                         </h1>
-                        <p className="text-brand-obsidian/60 font-medium">
+                        <p className="text-brand-obsidian/60 dark:text-slate-400 font-medium transition-colors">
                             Manage all event payments with institutional-grade PNPL financing.
                         </p>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <button className="btn-premium border-brand-accent/20 text-brand-accent hover:bg-brand-accent/10 flex items-center space-x-2">
+                        <button className="btn-premium border-brand-accent/20 text-brand-accent hover:bg-brand-accent/10 flex items-center space-x-2 transition-all">
                             <Download className="w-4 h-4" />
                             <span>Export Report</span>
                         </button>
@@ -167,7 +167,7 @@ const Payments = () => {
                                 onClick={() => setSelectedFilter(filter)}
                                 className={`px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all border ${selectedFilter === filter
                                     ? 'bg-brand-accent text-white border-brand-accent shadow-lg'
-                                    : 'bg-slate-50 text-brand-obsidian/40 border-slate-100 hover:border-brand-accent/20'
+                                    : 'bg-slate-50 dark:bg-slate-800 text-brand-obsidian/40 dark:text-slate-400 border-slate-100 dark:border-slate-700 hover:border-brand-accent/20'
                                     }`}
                             >
                                 {filter}
@@ -176,15 +176,15 @@ const Payments = () => {
                     </div>
                     <div className="flex items-center space-x-4">
                         <div className="relative group">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-obsidian/20" />
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-obsidian/20 dark:text-slate-500" />
                             <input
                                 type="text"
                                 placeholder="Search payments..."
-                                className="bg-slate-50 border border-slate-200 rounded-full py-3 pl-12 pr-6 outline-none focus:ring-1 focus:ring-brand-accent/50 text-xs font-bold min-w-[300px]"
+                                className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full py-3 pl-12 pr-6 outline-none focus:ring-1 focus:ring-brand-accent/50 text-xs font-bold min-w-[300px] text-brand-obsidian dark:text-white placeholder:text-brand-obsidian/30 dark:placeholder:text-slate-500 transition-all duration-300"
                             />
                         </div>
-                        <button className="p-3 bg-slate-50 rounded-full border border-slate-200 hover:border-brand-accent/30 transition-all">
-                            <Filter className="w-5 h-5 text-brand-obsidian/40" />
+                        <button className="p-3 bg-slate-50 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700 hover:border-brand-accent/30 transition-all text-brand-obsidian/40 dark:text-slate-400">
+                            <Filter className="w-5 h-5" />
                         </button>
                     </div>
                 </div>
@@ -200,7 +200,7 @@ const Payments = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="glass-luxury p-10 rounded-[48px] border-brand-accent/20 bg-gradient-to-r from-brand-accent/5 to-transparent relative overflow-hidden"
+                    className="glass-luxury p-10 rounded-[48px] border-brand-accent/20 bg-gradient-to-r from-brand-accent/5 to-transparent dark:from-brand-accent/10 dark:to-transparent relative overflow-hidden transition-all duration-300"
                 >
                     <div className="absolute top-0 right-0 w-64 h-64 bg-brand-accent/10 rounded-full blur-3xl" />
                     <div className="relative z-10 flex items-center justify-between">
@@ -209,11 +209,11 @@ const Payments = () => {
                                 <div className="w-12 h-12 bg-brand-accent/10 rounded-xl flex items-center justify-center text-brand-accent">
                                     <CreditCard className="w-6 h-6" />
                                 </div>
-                                <h3 className="text-2xl font-black uppercase tracking-tight text-brand-obsidian">
+                                <h3 className="text-2xl font-black uppercase tracking-tight text-brand-obsidian dark:text-white transition-colors">
                                     PNPL Financing Available
                                 </h3>
                             </div>
-                            <p className="text-brand-obsidian/60 font-medium leading-relaxed">
+                            <p className="text-brand-obsidian/60 dark:text-slate-400 font-medium leading-relaxed transition-colors">
                                 Split your event expenses into flexible installments with our Pay Now, Pay Later solution.
                                 Get instant approval for up to ₹50L with competitive rates.
                             </p>
@@ -238,7 +238,7 @@ const Payments = () => {
                         <label className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold">
                             Select Vendor
                         </label>
-                        <select className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold">
+                        <select className="w-full px-6 py-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold text-brand-obsidian dark:text-white transition-all duration-300">
                             <option>Aether Catering</option>
                             <option>Lumina Visuals</option>
                             <option>Sonic Harmony</option>
@@ -252,7 +252,7 @@ const Payments = () => {
                         <input
                             type="number"
                             placeholder="Enter amount"
-                            className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold"
+                            className="w-full px-6 py-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold text-brand-obsidian dark:text-white placeholder:text-brand-obsidian/30 dark:placeholder:text-slate-600 transition-all duration-300"
                         />
                     </div>
 
@@ -264,7 +264,7 @@ const Payments = () => {
                             {['Full Payment', 'Partial Payment', 'Schedule Payment'].map((type) => (
                                 <button
                                     key={type}
-                                    className="px-4 py-3 rounded-2xl border border-slate-200 hover:border-brand-accent/30 hover:bg-slate-50 transition-all text-xs font-bold"
+                                    className="px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-brand-accent/30 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-xs font-bold text-brand-obsidian dark:text-white"
                                 >
                                     {type}
                                 </button>
@@ -280,7 +280,7 @@ const Payments = () => {
                             {['PNPL', 'Card', 'UPI', 'Bank'].map((method) => (
                                 <button
                                     key={method}
-                                    className="px-4 py-3 rounded-2xl border border-slate-200 hover:border-brand-accent/30 hover:bg-slate-50 transition-all text-xs font-bold"
+                                    className="px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-brand-accent/30 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-xs font-bold text-brand-obsidian dark:text-white"
                                 >
                                     {method}
                                 </button>

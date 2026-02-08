@@ -19,6 +19,7 @@ import PNPLDashboard from './pages/fintech/PNPLDash';
 import Payments from './pages/payments/Payments';
 import Settings from './pages/settings/Settings';
 import Messages from './pages/messages/Messages';
+import Chatbot from './pages/ai/Chatbot';
 import ForgotPassword from './pages/auth/ForgotPassword';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/payments" element={<Payments />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/messages" element={<Messages />} />
+                <Route path="/chatbot" element={<Chatbot />} />
             </Route>
 
             {/* Auth Routes */}

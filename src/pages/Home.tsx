@@ -30,7 +30,7 @@ const Home = () => {
     }, []);
 
     return (
-        <main ref={mainRef} className="relative bg-white text-brand-obsidian overflow-hidden min-h-screen">
+        <main ref={mainRef} className="relative bg-white dark:bg-slate-900 text-brand-obsidian dark:text-white overflow-hidden min-h-screen transition-colors duration-300">
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center pt-20">
                 <ImmersiveHero />
@@ -45,11 +45,11 @@ const Home = () => {
                         <span>The Future of Event Fintech</span>
                     </motion.div>
 
-                    <h1 className="text-7xl md:text-9xl font-black leading-none reveal-text text-brand-obsidian">
+                    <h1 className="text-7xl md:text-9xl font-black leading-none reveal-text text-brand-obsidian dark:text-white transition-colors duration-300">
                         Event<span className="text-luxury-gradient">Nomous.</span>
                     </h1>
 
-                    <p className="text-xl md:text-2xl text-brand-obsidian/60 max-w-2xl mx-auto font-medium leading-relaxed reveal-text">
+                    <p className="text-xl md:text-2xl text-brand-obsidian/60 dark:text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed reveal-text transition-colors duration-300">
                         Immersive planning, autonomous vendor matchmaking, and elite PNPL financing for the world's most ambitious events.
                     </p>
 
@@ -72,11 +72,11 @@ const Home = () => {
             </section>
 
             {/* Services Grid */}
-            <section className="py-40 px-6 relative z-10 bg-white">
+            <section className="py-40 px-6 relative z-10 bg-white dark:bg-slate-900 transition-colors duration-300">
                 <div className="max-w-7xl mx-auto space-y-24">
                     <div className="text-center space-y-6">
-                        <h2 className="text-5xl font-black text-brand-obsidian">Elite <span className="text-luxury-gradient">Infrastructure.</span></h2>
-                        <p className="text-brand-obsidian/50 max-w-2xl mx-auto">Scaling event management with institutional-grade technology.</p>
+                        <h2 className="text-5xl font-black text-brand-obsidian dark:text-white transition-colors duration-300">Elite <span className="text-luxury-gradient">Infrastructure.</span></h2>
+                        <p className="text-brand-obsidian/50 dark:text-slate-400 max-w-2xl mx-auto transition-colors duration-300">Scaling event management with institutional-grade technology.</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-12">
@@ -91,13 +91,13 @@ const Home = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.2 }}
-                                className="glass-luxury p-12 rounded-[48px] border-black/5 space-y-8 hover:border-brand-gold/20 transition-all group"
+                                className="glass-luxury dark:bg-slate-800/50 dark:border-slate-700/50 p-12 rounded-[48px] border-black/5 space-y-8 hover:border-brand-gold/20 transition-all group"
                             >
                                 <div className="w-16 h-16 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold group-hover:scale-110 transition-transform">
                                     <service.icon className="w-8 h-8" />
                                 </div>
-                                <h3 className="text-2xl font-black text-brand-obsidian">{service.title}</h3>
-                                <p className="text-brand-obsidian/60 leading-relaxed">{service.desc}</p>
+                                <h3 className="text-2xl font-black text-brand-obsidian dark:text-white transition-colors duration-300">{service.title}</h3>
+                                <p className="text-brand-obsidian/60 dark:text-slate-400 leading-relaxed transition-colors duration-300">{service.desc}</p>
                                 <button className="flex items-center space-x-2 text-brand-gold text-[10px] font-black uppercase tracking-widest hover:translate-x-2 transition-transform">
                                     <span>Learn More</span>
                                     <ArrowRight className="w-4 h-4" />
@@ -109,14 +109,14 @@ const Home = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="py-40 px-6 bg-white">
+            <section className="py-40 px-6 bg-white dark:bg-slate-900 transition-colors duration-300">
                 <div className="max-w-7xl mx-auto">
-                    <div className="glass-luxury rounded-[64px] p-20 text-center relative overflow-hidden border-black/5">
+                    <div className="glass-luxury rounded-[64px] p-20 text-center relative overflow-hidden border-black/5 dark:border-white/10">
                         <div className="absolute inset-0 bg-gradient-to-tr from-brand-gold/5 via-transparent to-brand-accent/5"></div>
                         <div className="relative z-10 space-y-10">
-                            <h2 className="text-6xl font-black max-w-3xl mx-auto text-brand-obsidian">Ready to build the <span className="text-luxury-gradient">Extraordinary?</span></h2>
-                            <p className="text-brand-obsidian/60 text-xl">Join 5,000+ elite planners and corporate organizers.</p>
-                            <button className="btn-premium bg-brand-obsidian text-white hover:bg-black border-none">
+                            <h2 className="text-6xl font-black max-w-3xl mx-auto text-brand-obsidian dark:text-white transition-colors duration-300">Ready to build the <span className="text-luxury-gradient">Extraordinary?</span></h2>
+                            <p className="text-brand-obsidian/60 dark:text-slate-400 text-xl transition-colors duration-300">Join 5,000+ elite planners and corporate organizers.</p>
+                            <button className="btn-premium bg-brand-obsidian text-white hover:bg-black border-none dark:bg-white dark:text-brand-obsidian dark:hover:bg-slate-200">
                                 Create Instant Account
                             </button>
                         </div>
@@ -125,15 +125,15 @@ const Home = () => {
             </section>
 
             {/* Footer Placeholder */}
-            <footer className="py-20 border-t border-slate-100 bg-white">
+            <footer className="py-20 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300">
                 <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
-                    <span className="text-2xl font-black tracking-tighter uppercase text-brand-obsidian">EventNomous.</span>
-                    <div className="flex space-x-12 text-[10px] font-black uppercase tracking-widest text-brand-obsidian/40">
+                    <span className="text-2xl font-black tracking-tighter uppercase text-brand-obsidian dark:text-white transition-colors duration-300">EventNomous.</span>
+                    <div className="flex space-x-12 text-[10px] font-black uppercase tracking-widest text-brand-obsidian/40 dark:text-slate-500">
                         <a href="#" className="hover:text-brand-gold transition-all">Privacy</a>
                         <a href="#" className="hover:text-brand-gold transition-all">Institutional</a>
                         <a href="#" className="hover:text-brand-gold transition-all">Contact</a>
                     </div>
-                    <p className="text-[10px] font-bold text-brand-obsidian/20">© 2026 EVENTNOMOUS FINTECH GROUP. ALL RIGHTS RESERVED.</p>
+                    <p className="text-[10px] font-bold text-brand-obsidian/20 dark:text-slate-600">© 2026 EVENTNOMOUS FINTECH GROUP. ALL RIGHTS RESERVED.</p>
                 </div>
             </footer>
 

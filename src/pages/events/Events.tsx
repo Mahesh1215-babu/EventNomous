@@ -22,20 +22,20 @@ const Events = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen bg-[#FDFCFD] pb-32 pt-20">
+        <div className="min-h-screen bg-[#FDFCFD] dark:bg-slate-900 pb-32 pt-20 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-6 space-y-24">
                 {/* Hero Section */}
-                <section className="glass-luxury rounded-[64px] p-20 text-brand-obsidian relative overflow-hidden ring-1 ring-slate-100 bg-white shadow-xl">
+                <section className="glass-luxury rounded-[64px] p-20 text-brand-obsidian dark:text-white relative overflow-hidden ring-1 ring-slate-100 dark:ring-slate-700 bg-white dark:bg-slate-800/50 shadow-xl transition-all duration-300">
                     <div className="relative z-10 space-y-8 max-w-3xl">
                         <div className="inline-flex items-center space-x-2 px-3 py-1 bg-brand-accent/10 rounded-full border border-brand-accent/20">
                             <Video className="w-4 h-4 text-brand-accent" />
                             <span className="text-[10px] font-black uppercase tracking-widest text-brand-accent">3D Immersive Discovery</span>
                         </div>
-                        <h1 className="text-7xl font-black leading-tight text-brand-obsidian">Your Event, <br /> Our <span className="text-luxury-gradient">Immersive</span> Vision.</h1>
-                        <p className="text-brand-obsidian/60 text-xl font-medium">Browse categories to see AI-generated roadmaps and 3D venue previews instantly.</p>
+                        <h1 className="text-7xl font-black leading-tight text-brand-obsidian dark:text-white transition-colors duration-300">Your Event, <br /> Our <span className="text-luxury-gradient">Immersive</span> Vision.</h1>
+                        <p className="text-brand-obsidian/60 dark:text-slate-400 text-xl font-medium transition-colors duration-300">Browse categories to see AI-generated roadmaps and 3D venue previews instantly.</p>
                         <div className="flex space-x-4 pt-4">
-                            <button onClick={() => navigate('/events/create')} className="btn-premium py-4 px-10 text-xs font-black uppercase tracking-widest bg-brand-accent text-white shadow-lg shadow-brand-accent/20">Quick Start Plan</button>
-                            <button className="px-10 py-4 glass-luxury text-brand-obsidian text-xs font-black uppercase tracking-widest border-slate-200 hover:bg-slate-50 transition-all bg-white shadow-sm">Talk to AI Agent</button>
+                            <button onClick={() => navigate('/events/create')} className="btn-premium py-4 px-10 text-xs font-black uppercase tracking-widest bg-brand-accent text-white shadow-lg shadow-brand-accent/20 hover:bg-brand-accent/90">Quick Start Plan</button>
+                            <button onClick={() => navigate('/chatbot')} className="px-10 py-4 glass-luxury text-brand-obsidian dark:text-white text-xs font-black uppercase tracking-widest border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all bg-white dark:bg-slate-900 shadow-sm">Talk to AI Agent</button>
                         </div>
                     </div>
 
@@ -48,10 +48,10 @@ const Events = () => {
                 <section className="space-y-12">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                         <div className="space-y-4">
-                            <h2 className="text-4xl font-black text-brand-dark tracking-tight">Featured Moments</h2>
-                            <p className="text-brand-slate font-medium">Explore high-fidelity outcomes from our most successful AI-planned events.</p>
+                            <h2 className="text-4xl font-black text-brand-dark dark:text-white tracking-tight transition-colors duration-300">Featured Moments</h2>
+                            <p className="text-brand-slate dark:text-slate-400 font-medium transition-colors duration-300">Explore high-fidelity outcomes from our most successful AI-planned events.</p>
                         </div>
-                        <button className="btn-outline flex items-center space-x-2">
+                        <button className="btn-outline flex items-center space-x-2 dark:text-white dark:border-white/20 dark:hover:bg-white/10">
                             <span>View All Gallery</span>
                             <ArrowRight className="w-4 h-4" />
                         </button>
@@ -63,8 +63,8 @@ const Events = () => {
                 {/* Categories Grid */}
                 <section className="space-y-12">
                     <div className="text-center space-y-4">
-                        <h2 className="text-4xl font-black text-brand-dark tracking-tight">Interactive Categories</h2>
-                        <p className="text-brand-slate font-medium">Built with specialized AI workflows for different event types.</p>
+                        <h2 className="text-4xl font-black text-brand-dark dark:text-white tracking-tight transition-colors duration-300">Interactive Categories</h2>
+                        <p className="text-brand-slate dark:text-slate-400 font-medium transition-colors duration-300">Built with specialized AI workflows for different event types.</p>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -72,16 +72,16 @@ const Events = () => {
                             <div
                                 key={i}
                                 onClick={() => navigate('/events/create')}
-                                className="glass-luxury p-10 rounded-[48px] text-center space-y-6 card-hover border-slate-100 hover:border-brand-accent/20 cursor-pointer group bg-white shadow-sm"
+                                className="glass-luxury p-10 rounded-[48px] text-center space-y-6 card-hover border-slate-100 hover:border-brand-accent/20 cursor-pointer group bg-white dark:bg-slate-800/50 dark:border-slate-700/50 shadow-sm transition-all duration-300"
                             >
-                                <div className={`w-24 h-24 mx-auto rounded-[32px] ${cat.bg} flex items-center justify-center group-hover:rotate-12 transition-transform duration-500 shadow-sm`}>
+                                <div className={`w-24 h-24 mx-auto rounded-[32px] ${cat.bg} dark:bg-slate-900/50 flex items-center justify-center group-hover:rotate-12 transition-transform duration-500 shadow-sm`}>
                                     <cat.icon className={`w-12 h-12 ${cat.color}`} />
                                 </div>
                                 <div className="space-y-1">
-                                    <h3 className="text-xl font-black text-brand-obsidian leading-tight">{cat.name}</h3>
+                                    <h3 className="text-xl font-black text-brand-obsidian dark:text-white leading-tight transition-colors duration-300">{cat.name}</h3>
                                     <p className="text-[10px] font-black text-brand-accent uppercase tracking-widest">{cat.count} Active Plans</p>
                                 </div>
-                                <div className="flex items-center justify-center space-x-2 text-brand-obsidian/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div className="flex items-center justify-center space-x-2 text-brand-obsidian/40 dark:text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <span className="text-[10px] font-black uppercase tracking-widest">Start Plan</span>
                                     <ArrowRight className="w-3 h-3" />
                                 </div>
@@ -91,10 +91,10 @@ const Events = () => {
                 </section>
 
                 {/* Feature Preview */}
-                <section className="glass rounded-[64px] p-20 grid lg:grid-cols-2 gap-20 items-center">
+                <section className="glass rounded-[64px] p-20 grid lg:grid-cols-2 gap-20 items-center dark:bg-slate-800/50 dark:border-slate-700/50 transition-colors duration-300">
                     <div className="space-y-10">
-                        <h2 className="text-5xl font-black text-brand-dark leading-tight">Experience venues <br /> in <span className="text-brand-purple italic">Phygital</span> 3D.</h2>
-                        <p className="text-brand-slate text-lg font-medium leading-relaxed">
+                        <h2 className="text-5xl font-black text-brand-dark dark:text-white leading-tight transition-colors duration-300">Experience venues <br /> in <span className="text-brand-purple italic">Phygital</span> 3D.</h2>
+                        <p className="text-brand-slate dark:text-slate-400 text-lg font-medium leading-relaxed transition-colors duration-300">
                             Don't just look at photos. Our platform uses WebGL to render high-fidelity 3D models of venues,
                             allowing you to test seating arrangements and lighting before the actual day.
                         </p>
@@ -106,7 +106,7 @@ const Events = () => {
                             ].map((f, i) => (
                                 <div key={i} className="flex items-center space-x-3">
                                     <CheckCircle2 className="text-green-500 w-6 h-6 shrink-0" />
-                                    <span className="font-bold text-brand-dark uppercase tracking-tight text-sm">{f}</span>
+                                    <span className="font-bold text-brand-dark dark:text-white uppercase tracking-tight text-sm transition-colors duration-300">{f}</span>
                                 </div>
                             ))}
                         </div>

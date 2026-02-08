@@ -47,7 +47,7 @@ export default function Modal({
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+                        className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm z-50 transition-colors duration-300"
                     />
 
                     {/* Modal */}
@@ -56,20 +56,20 @@ export default function Modal({
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            className={`glass-luxury bg-white rounded-[48px] border-slate-100 shadow-2xl w-full ${sizeClasses[size]} max-h-[90vh] overflow-hidden flex flex-col`}
+                            className={`glass-luxury bg-white dark:bg-slate-900 rounded-[48px] border-slate-100 dark:border-slate-700 shadow-2xl w-full ${sizeClasses[size]} max-h-[90vh] overflow-hidden flex flex-col transition-colors duration-300`}
                         >
                             {/* Header */}
                             {(title || showCloseButton) && (
-                                <div className="flex items-center justify-between p-8 border-b border-slate-100">
+                                <div className="flex items-center justify-between p-8 border-b border-slate-100 dark:border-slate-800 transition-colors">
                                     {title && (
-                                        <h2 className="text-2xl font-black uppercase tracking-tight text-brand-obsidian">
+                                        <h2 className="text-2xl font-black uppercase tracking-tight text-brand-obsidian dark:text-white transition-colors">
                                             {title}
                                         </h2>
                                     )}
                                     {showCloseButton && (
                                         <button
                                             onClick={onClose}
-                                            className="w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-100 flex items-center justify-center transition-all text-brand-obsidian/40 hover:text-brand-obsidian ml-auto"
+                                            className="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center transition-all text-brand-obsidian/40 dark:text-slate-400 hover:text-brand-obsidian dark:hover:text-white ml-auto"
                                         >
                                             <X className="w-5 h-5" />
                                         </button>
@@ -78,7 +78,7 @@ export default function Modal({
                             )}
 
                             {/* Content */}
-                            <div className="flex-1 overflow-y-auto p-8">
+                            <div className="flex-1 overflow-y-auto p-8 text-brand-obsidian dark:text-slate-200 transition-colors">
                                 {children}
                             </div>
                         </motion.div>

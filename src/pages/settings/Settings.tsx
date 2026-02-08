@@ -1,43 +1,47 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSettings } from '../../context/SettingsContext';
 import { motion } from 'framer-motion';
 import {
     User, Mail, Phone, MapPin,
     Lock, Shield, Bell, Eye,
-    Save, Camera
+    Save, Camera, Zap
 } from 'lucide-react';
 
 const Settings = () => {
-    const [activeTab, setActiveTab] = useState<'profile' | 'security' | 'notifications' | 'privacy'>('profile');
+    const [activeTab, setActiveTab] = useState<'profile' | 'security' | 'notifications' | 'privacy' | 'preferences'>('profile');
+
+    const { theme, setTheme, language, setLanguage, fontSize, setFontSize } = useSettings();
 
     const tabs = [
         { id: 'profile' as const, label: 'Profile & Account', icon: User },
         { id: 'security' as const, label: 'Security', icon: Shield },
         { id: 'notifications' as const, label: 'Notifications', icon: Bell },
         { id: 'privacy' as const, label: 'Privacy', icon: Eye },
+        { id: 'preferences' as const, label: 'Basic Settings', icon: Zap },
     ];
 
     return (
-        <div className="min-h-screen bg-white pt-32 pb-20 px-6">
+        <div className={`min-h-screen pt-32 pb-20 px-6 transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-900' : 'bg-white'}`}>
             <div className="max-w-6xl mx-auto space-y-12">
                 {/* Header */}
                 <div className="space-y-4">
-                    <h1 className="text-5xl font-black uppercase tracking-tighter text-brand-obsidian">
+                    <h1 className={`text-5xl font-black uppercase tracking-tighter ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>
                         Account <span className="text-brand-accent">Settings.</span>
                     </h1>
-                    <p className="text-brand-obsidian/60 font-medium">
+                    <p className={`font-medium ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/60'}`}>
                         Manage your profile, security, and preferences.
                     </p>
                 </div>
 
                 {/* Tabs */}
-                <div className="flex space-x-2 border-b border-slate-100 overflow-x-auto">
+                <div className={`flex space-x-2 border-b overflow-x-auto ${theme === 'dark' ? 'border-slate-800' : 'border-slate-100'}`}>
                     {tabs.map((tab) => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex items-center space-x-2 px-6 py-4 text-xs font-black uppercase tracking-widest transition-all border-b-2 ${activeTab === tab.id
                                 ? 'border-brand-accent text-brand-accent'
-                                : 'border-transparent text-brand-obsidian/40 hover:text-brand-obsidian'
+                                : theme === 'dark' ? 'border-transparent text-slate-500 hover:text-slate-300' : 'border-transparent text-brand-obsidian/40 hover:text-brand-obsidian'
                                 }`}
                         >
                             <tab.icon className="w-4 h-4" />
@@ -47,17 +51,16 @@ const Settings = () => {
                 </div>
 
                 {/* Content */}
-                <motion.div
+                {/* Content */}
+                <div
                     key={activeTab}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
                     className="space-y-8"
                 >
                     {activeTab === 'profile' && (
                         <div className="space-y-8">
                             {/* Profile Picture */}
-                            <div className="glass-luxury bg-white p-8 rounded-[32px] border-slate-100 shadow-sm">
-                                <h3 className="text-xl font-black uppercase tracking-tight text-brand-obsidian mb-6">
+                            <div className={`glass-luxury p-8 rounded-[32px] border shadow-sm ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'}`}>
+                                <h3 className={`text-xl font-black uppercase tracking-tight mb-6 ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>
                                     Profile Picture
                                 </h3>
                                 <div className="flex items-center space-x-6">
@@ -69,14 +72,14 @@ const Settings = () => {
                                             <Camera className="w-4 h-4" />
                                             <span>Upload New Photo</span>
                                         </button>
-                                        <p className="text-xs text-brand-obsidian/40">JPG, PNG or GIF. Max size 2MB.</p>
+                                        <p className={`text-xs ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/40'}`}>JPG, PNG or GIF. Max size 2MB.</p>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Personal Information */}
-                            <div className="glass-luxury bg-white p-8 rounded-[32px] border-slate-100 shadow-sm space-y-6">
-                                <h3 className="text-xl font-black uppercase tracking-tight text-brand-obsidian">
+                            <div className={`glass-luxury p-8 rounded-[32px] border shadow-sm space-y-6 ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'}`}>
+                                <h3 className={`text-xl font-black uppercase tracking-tight ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>
                                     Personal Information
                                 </h3>
                                 <div className="grid md:grid-cols-2 gap-6">
@@ -85,11 +88,11 @@ const Settings = () => {
                                             Full Name
                                         </label>
                                         <div className="relative">
-                                            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-obsidian/40" />
+                                            <User className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/40'}`} />
                                             <input
                                                 type="text"
                                                 defaultValue="Priya Sharma"
-                                                className="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold"
+                                                className={`w-full pl-12 pr-6 py-4 border rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold ${theme === 'dark' ? 'bg-slate-900 border-slate-700 text-white' : 'bg-slate-50 border-slate-200'}`}
                                             />
                                         </div>
                                     </div>
@@ -98,11 +101,11 @@ const Settings = () => {
                                             Email Address
                                         </label>
                                         <div className="relative">
-                                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-obsidian/40" />
+                                            <Mail className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/40'}`} />
                                             <input
                                                 type="email"
                                                 defaultValue="priya.sharma@example.com"
-                                                className="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold"
+                                                className={`w-full pl-12 pr-6 py-4 border rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold ${theme === 'dark' ? 'bg-slate-900 border-slate-700 text-white' : 'bg-slate-50 border-slate-200'}`}
                                             />
                                         </div>
                                     </div>
@@ -111,11 +114,11 @@ const Settings = () => {
                                             Phone Number
                                         </label>
                                         <div className="relative">
-                                            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-obsidian/40" />
+                                            <Phone className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/40'}`} />
                                             <input
                                                 type="tel"
                                                 defaultValue="+91 98765 43210"
-                                                className="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold"
+                                                className={`w-full pl-12 pr-6 py-4 border rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold ${theme === 'dark' ? 'bg-slate-900 border-slate-700 text-white' : 'bg-slate-50 border-slate-200'}`}
                                             />
                                         </div>
                                     </div>
@@ -124,11 +127,11 @@ const Settings = () => {
                                             Location
                                         </label>
                                         <div className="relative">
-                                            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-obsidian/40" />
+                                            <MapPin className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/40'}`} />
                                             <input
                                                 type="text"
                                                 defaultValue="Mumbai, Maharashtra"
-                                                className="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold"
+                                                className={`w-full pl-12 pr-6 py-4 border rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold ${theme === 'dark' ? 'bg-slate-900 border-slate-700 text-white' : 'bg-slate-50 border-slate-200'}`}
                                             />
                                         </div>
                                     </div>
@@ -144,8 +147,8 @@ const Settings = () => {
                     {activeTab === 'security' && (
                         <div className="space-y-8">
                             {/* Change Password */}
-                            <div className="glass-luxury bg-white p-8 rounded-[32px] border-slate-100 shadow-sm space-y-6">
-                                <h3 className="text-xl font-black uppercase tracking-tight text-brand-obsidian">
+                            <div className={`glass-luxury p-8 rounded-[32px] border shadow-sm space-y-6 ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'}`}>
+                                <h3 className={`text-xl font-black uppercase tracking-tight ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>
                                     Change Password
                                 </h3>
                                 <div className="space-y-4">
@@ -154,11 +157,11 @@ const Settings = () => {
                                             Current Password
                                         </label>
                                         <div className="relative">
-                                            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-obsidian/40" />
+                                            <Lock className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/40'}`} />
                                             <input
                                                 type="password"
                                                 placeholder="••••••••"
-                                                className="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold"
+                                                className={`w-full pl-12 pr-6 py-4 border rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold ${theme === 'dark' ? 'bg-slate-900 border-slate-700 text-white' : 'bg-slate-50 border-slate-200'}`}
                                             />
                                         </div>
                                     </div>
@@ -167,11 +170,11 @@ const Settings = () => {
                                             New Password
                                         </label>
                                         <div className="relative">
-                                            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-obsidian/40" />
+                                            <Lock className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/40'}`} />
                                             <input
                                                 type="password"
                                                 placeholder="••••••••"
-                                                className="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold"
+                                                className={`w-full pl-12 pr-6 py-4 border rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold ${theme === 'dark' ? 'bg-slate-900 border-slate-700 text-white' : 'bg-slate-50 border-slate-200'}`}
                                             />
                                         </div>
                                     </div>
@@ -180,11 +183,11 @@ const Settings = () => {
                                             Confirm New Password
                                         </label>
                                         <div className="relative">
-                                            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-obsidian/40" />
+                                            <Lock className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/40'}`} />
                                             <input
                                                 type="password"
                                                 placeholder="••••••••"
-                                                className="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold"
+                                                className={`w-full pl-12 pr-6 py-4 border rounded-2xl focus:ring-1 focus:ring-brand-accent/50 outline-none font-bold ${theme === 'dark' ? 'bg-slate-900 border-slate-700 text-white' : 'bg-slate-50 border-slate-200'}`}
                                             />
                                         </div>
                                     </div>
@@ -195,13 +198,13 @@ const Settings = () => {
                             </div>
 
                             {/* Two-Factor Authentication */}
-                            <div className="glass-luxury bg-white p-8 rounded-[32px] border-slate-100 shadow-sm">
+                            <div className={`glass-luxury p-8 rounded-[32px] border shadow-sm ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'}`}>
                                 <div className="flex items-center justify-between">
                                     <div className="space-y-2">
-                                        <h3 className="text-xl font-black uppercase tracking-tight text-brand-obsidian">
+                                        <h3 className={`text-xl font-black uppercase tracking-tight ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>
                                             Two-Factor Authentication
                                         </h3>
-                                        <p className="text-sm text-brand-obsidian/60 font-medium">
+                                        <p className={`text-sm font-medium ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/60'}`}>
                                             Add an extra layer of security to your account
                                         </p>
                                     </div>
@@ -215,8 +218,8 @@ const Settings = () => {
                     )}
 
                     {activeTab === 'notifications' && (
-                        <div className="glass-luxury bg-white p-8 rounded-[32px] border-slate-100 shadow-sm space-y-6">
-                            <h3 className="text-xl font-black uppercase tracking-tight text-brand-obsidian">
+                        <div className={`glass-luxury p-8 rounded-[32px] border shadow-sm space-y-6 ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'}`}>
+                            <h3 className={`text-xl font-black uppercase tracking-tight ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>
                                 Notification Preferences
                             </h3>
                             {[
@@ -226,10 +229,10 @@ const Settings = () => {
                                 { label: 'AI Recommendations', desc: 'Receive AI-powered suggestions' },
                                 { label: 'Marketing Emails', desc: 'Updates about new features and offers' },
                             ].map((item, index) => (
-                                <div key={index} className="flex items-center justify-between py-4 border-b border-slate-100 last:border-0">
+                                <div key={index} className={`flex items-center justify-between py-4 border-b last:border-0 ${theme === 'dark' ? 'border-slate-700' : 'border-slate-100'}`}>
                                     <div>
-                                        <p className="font-black text-brand-obsidian">{item.label}</p>
-                                        <p className="text-sm text-brand-obsidian/60">{item.desc}</p>
+                                        <p className={`font-black ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>{item.label}</p>
+                                        <p className={`text-sm ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/60'}`}>{item.desc}</p>
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" defaultChecked={index < 3} className="sr-only peer" />
@@ -241,8 +244,8 @@ const Settings = () => {
                     )}
 
                     {activeTab === 'privacy' && (
-                        <div className="glass-luxury bg-white p-8 rounded-[32px] border-slate-100 shadow-sm space-y-6">
-                            <h3 className="text-xl font-black uppercase tracking-tight text-brand-obsidian">
+                        <div className={`glass-luxury p-8 rounded-[32px] border shadow-sm space-y-6 ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'}`}>
+                            <h3 className={`text-xl font-black uppercase tracking-tight ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>
                                 Privacy Settings
                             </h3>
                             {[
@@ -250,10 +253,10 @@ const Settings = () => {
                                 { label: 'Event History', desc: 'Show your past events on your profile' },
                                 { label: 'Data Sharing', desc: 'Share anonymized data for platform improvement' },
                             ].map((item, index) => (
-                                <div key={index} className="flex items-center justify-between py-4 border-b border-slate-100 last:border-0">
+                                <div key={index} className={`flex items-center justify-between py-4 border-b last:border-0 ${theme === 'dark' ? 'border-slate-700' : 'border-slate-100'}`}>
                                     <div>
-                                        <p className="font-black text-brand-obsidian">{item.label}</p>
-                                        <p className="text-sm text-brand-obsidian/60">{item.desc}</p>
+                                        <p className={`font-black ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>{item.label}</p>
+                                        <p className={`text-sm ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/60'}`}>{item.desc}</p>
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input type="checkbox" defaultChecked className="sr-only peer" />
@@ -263,7 +266,77 @@ const Settings = () => {
                             ))}
                         </div>
                     )}
-                </motion.div>
+
+                    {activeTab === 'preferences' && (
+                        <div className="space-y-8">
+                            {/* Visual & Language Settings */}
+                            <div className={`glass-luxury p-8 rounded-[32px] border shadow-sm space-y-8 ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-100'}`}>
+                                <h3 className={`text-xl font-black uppercase tracking-tight ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>
+                                    Display & Language
+                                </h3>
+
+                                {/* Theme */}
+                                <div className={`flex items-center justify-between py-4 border-b ${theme === 'dark' ? 'border-slate-700' : 'border-slate-100'}`}>
+                                    <div>
+                                        <p className={`font-black ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>Theme Preference</p>
+                                        <p className={`text-sm ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/60'}`}>Switch between light and dark visual modes.</p>
+                                    </div>
+                                    <div className={`flex p-1 rounded-xl ${theme === 'dark' ? 'bg-slate-900' : 'bg-slate-100'}`}>
+                                        <button
+                                            onClick={() => setTheme('light')}
+                                            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all ${theme === 'light' ? 'bg-white text-brand-obsidian shadow-sm' : 'text-slate-400 hover:text-white'}`}
+                                        >
+                                            Light
+                                        </button>
+                                        <button
+                                            onClick={() => setTheme('dark')}
+                                            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all ${theme === 'dark' ? 'bg-slate-700 text-white shadow-sm' : 'text-brand-obsidian/40 hover:text-brand-obsidian'}`}
+                                        >
+                                            Dark
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Language */}
+                                <div className={`space-y-2 py-4 border-b ${theme === 'dark' ? 'border-slate-700' : 'border-slate-100'}`}>
+                                    <p className={`font-black ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>Language Region</p>
+                                    <p className={`text-sm pb-2 ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/60'}`}>Select your preferred interface language.</p>
+                                    <select
+                                        value={language}
+                                        onChange={(e) => setLanguage(e.target.value)}
+                                        className={`w-full md:w-1/2 p-3 border rounded-xl font-bold text-sm outline-none focus:ring-1 focus:ring-brand-accent ${theme === 'dark' ? 'bg-slate-900 border-slate-700 text-white' : 'bg-slate-50 border-slate-200'}`}
+                                    >
+                                        <option value="en">English (United States)</option>
+                                        <option value="es">Spanish (Español)</option>
+                                        <option value="fr">French (Français)</option>
+                                        <option value="de">German (Deutsch)</option>
+                                        <option value="zh">Chinese (中文)</option>
+                                    </select>
+                                </div>
+
+                                {/* Font Size */}
+                                <div className="space-y-4 py-4">
+                                    <div>
+                                        <p className={`font-black ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>Typography Scaling</p>
+                                        <p className={`text-sm ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/60'}`}>Adjust the base font size for better readability.</p>
+                                    </div>
+                                    <div className="flex items-center space-x-4">
+                                        <span className={`text-xs font-bold ${theme === 'dark' ? 'text-slate-400' : 'text-brand-obsidian/40'}`}>A</span>
+                                        <input
+                                            type="range"
+                                            min="12"
+                                            max="20"
+                                            value={fontSize}
+                                            onChange={(e) => setFontSize(parseInt(e.target.value))}
+                                            className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-accent"
+                                        />
+                                        <span className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-brand-obsidian'}`}>A</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
